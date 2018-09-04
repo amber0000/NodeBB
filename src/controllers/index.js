@@ -37,6 +37,7 @@ Controllers.osd = require('./osd');
 Controllers['404'] = require('./404');
 Controllers.errors = require('./errors');
 Controllers.composer = require('./composer');
+Controllers.backtesting = require('./backtesting')
 
 Controllers.reset = function (req, res, next) {
 	const renderReset = function (code, valid) {

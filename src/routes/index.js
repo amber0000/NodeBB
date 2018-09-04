@@ -86,6 +86,11 @@ function groupRoutes(app, middleware, controllers) {
 	setupPageRoute(app, '/groups/:slug/members', middleware, middlewares, controllers.groups.members);
 }
 
+function backtastingRoutes(app, middleware, controllers) {
+	setupPageRoute(app, '/backtesting', middleware, [], controllers.backtesting.get);
+	setupPageRoute(app, '/backtesting/:slug', middleware, [], controllers.backtesting.get);
+}
+
 module.exports = function (app, middleware, hotswapIds, callback) {
 	var routers = [
 		express.Router(),	// plugin router
@@ -142,6 +147,7 @@ module.exports = function (app, middleware, hotswapIds, callback) {
 	accountRoutes(router, middleware, controllers);
 	userRoutes(router, middleware, controllers);
 	groupRoutes(router, middleware, controllers);
+	backtastingRoutes(router, middleware, controllers);
 
 	for (x = 0; x < routers.length; x += 1) {
 		app.use(relativePath || '/', routers[x]);

@@ -23,6 +23,13 @@ module.exports = function (app, middleware, controllers) {
 	router.get('/:type/tid/:id', controllers.api.getObject);
 	router.get('/:type/cid/:id', controllers.api.getObject);
 
+	router.get('/test', function (req, res, next) {
+		var result = [1,2,3,4,5]
+		res.json(result);
+	});
+
+	
+
 	router.get('/categories/:cid/moderators', controllers.api.getModerators);
 	router.get('/recent/posts/:term?', controllers.posts.getRecentPosts);
 	router.get('/unread/total', middleware.authenticate, controllers.unread.unreadTotal);
